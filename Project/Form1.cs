@@ -8,8 +8,8 @@ namespace Project
         int distance = 50;
         Pen pen = new Pen(Color.Black, 4);
 
-        PointF start_p = new PointF(10, 10);
-        PointF end_p = new PointF(600, 600);
+        PointF start_p = new PointF(50, 50);
+        PointF end_p = new PointF(400, 700);
 
         PointF p1;
         PointF p2;
@@ -40,14 +40,12 @@ namespace Project
         int nowSteps = 0;
         int n = 0;
         double step;
-
+        int directionX;
+        int directionY;
         private void timer1_Tick(object sender, EventArgs e)
         {
             if (nowSteps != countSteps)
             {
-                int directionX = p1.X < p2.X ? 1 : -1;
-                int directionY = p1.Y < p2.Y ? 1 : -1;
-
                 p1.X += (float)(directionX * step * MathTrigonometry.Cos(angl, n));
                 p1.Y += (float)(directionY * step * MathTrigonometry.Sin(angl, n));
 
@@ -75,6 +73,8 @@ namespace Project
             p1 = start_p;
             p2 = end_p;
             n = (int)Accuracy_NumericUpDown.Value;
+            directionX = p1.X < p2.X ? 1 : -1;
+            directionY = p1.Y < p2.Y ? 1 : -1;
 
             countSteps = (int)CountSteps_NumericUpDown.Value;
             nowSteps = 0;

@@ -52,6 +52,14 @@ namespace Project
             double res = 0;
             int sign = 1;
 
+            if (Math.Abs(x) > 1)
+            {
+                res = Math.PI / 2;
+                x = 1 / x;
+                sign = -1;
+            }
+
+
             for (int i = 0; i < n; i++)
             {
                 res += sign * Math.Pow(x, 2 * i + 1) / (2 * i + 1);
